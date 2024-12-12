@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { AppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -19,6 +20,7 @@ const ApplyProgram = () => {
   const{ backendUrl } = useContext(AppContext)
 
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,6 +45,7 @@ const ApplyProgram = () => {
         password: "",
         message: "",
       });
+      navigate('/our-programs')
     } catch (error) {
       const errMsg =
         error.response?.data?.message || "An error occurred. Please try again.";

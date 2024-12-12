@@ -3,6 +3,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { countries } from "../assets/asset";
 import { AppContext } from "../context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -23,6 +24,7 @@ const Partner = () => {
   const [loading, setLoading] = useState(false);
 
   const{ backendUrl } = useContext(AppContext)
+  const navigate = useNavigate()
 
 
   const handleChange = (e) => {
@@ -52,6 +54,7 @@ const Partner = () => {
         role: "",
         message: "",
       });
+      navigate('/our-programs')
     } catch (error) {
       console.error(error);
       toast.error( error.response?.data?.message || "An error occurred. Please try again."); 
