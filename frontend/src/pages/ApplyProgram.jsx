@@ -36,6 +36,7 @@ const ApplyProgram = () => {
 
     try {
       const response = await axios.post(`${backendUrl}/api/students/register`,formData);
+      navigate('/our-programs')
       toast.success(response.data.message || "Registration successful!");
       setFormData({
         firstName: "",
@@ -45,7 +46,6 @@ const ApplyProgram = () => {
         password: "",
         message: "",
       });
-      navigate('/our-programs')
     } catch (error) {
       const errMsg =
         error.response?.data?.message || "An error occurred. Please try again.";

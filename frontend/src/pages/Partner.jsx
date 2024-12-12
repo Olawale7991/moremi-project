@@ -41,6 +41,7 @@ const Partner = () => {
 
     try {
       const response = await axios.post(`${backendUrl}/api/partners/register`, formData);
+      navigate('/our-programs')
       toast.success(response.data.message); 
       setFormData({
         firstName: "",
@@ -54,7 +55,6 @@ const Partner = () => {
         role: "",
         message: "",
       });
-      navigate('/our-programs')
     } catch (error) {
       console.error(error);
       toast.error( error.response?.data?.message || "An error occurred. Please try again."); 
