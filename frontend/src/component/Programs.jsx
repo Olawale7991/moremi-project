@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { assets } from "../assets/asset";
 import { programs } from "../assets/asset";
+import { useNavigate } from "react-router-dom";
 
 const Programs = () => {
   const [visibleContent, setVisibleContent] = useState(null);
+
+  const navigate = useNavigate()
 
   const toggleContent = (id) => {
     setVisibleContent(visibleContent === id ? null : id);
@@ -21,7 +24,7 @@ const Programs = () => {
           <p className="flex flex-col md:flex-row items-center gap-3 text-white text-sm font-light">
             Explore what we are offering
           </p>
-          <button className="flex items-center gap-2 bg-[#E13D7E] px-8 py-3 rounded-full text-white text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300">
+          <button onClick={()=>navigate('/registration')} className="flex items-center gap-2 bg-[#E13D7E] px-8 py-3 rounded-full text-white text-sm m-auto md:m-0 hover:scale-105 transition-all duration-300">
             Apply Now
           </button>
         </div>

@@ -1,7 +1,9 @@
 import React from 'react'
 import { assets } from '../assets/asset'
+import { useNavigate } from 'react-router-dom'
 
 const Footer = () => {
+  const navigate = useNavigate()
   return (
     <div className='mt-32'>
     <div className="relative">
@@ -11,7 +13,7 @@ const Footer = () => {
       Become The Next Female <br /> Techstars Now
     </p>
 
-    <button className="border bg-white text-[#E13D7E] py-2 px-6 my-10">
+    <button onClick={()=> navigate('/registration')} className="border bg-white text-[#E13D7E] py-2 px-6 my-10">
       Apply to program
     </button>
   </div>

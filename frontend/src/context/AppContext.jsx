@@ -5,6 +5,9 @@ export const AppContext = createContext();
 const AppContextProvider = (props) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+
   const testimonials = [
     { id: 1, text: "Testimonial 1", name: "User 1" },
     { id: 2, text: "Testimonial 2", name: "User 2" },
@@ -13,11 +16,11 @@ const AppContextProvider = (props) => {
   ];
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % testimonials.length); // Cycle back to 0
+    setCurrentSlide((prev) => (prev + 1) % testimonials.length); 
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length); // Cycle to last slide
+    setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length); 
   };
 
   const goToSlide = (index) => {
@@ -25,8 +28,8 @@ const AppContextProvider = (props) => {
   };
 
   useEffect(() => {
-    const interval = setInterval(nextSlide, 5000); // Auto-slide every 30 seconds
-    return () => clearInterval(interval); // Clear interval on unmount
+    const interval = setInterval(nextSlide, 5000); 
+    return () => clearInterval(interval); 
   }, []);
 
   const value = {
@@ -34,6 +37,7 @@ const AppContextProvider = (props) => {
     nextSlide,
     prevSlide,
     goToSlide,
+    backendUrl
   };
 
   return <AppContext.Provider value={value}>{props.children}</AppContext.Provider>;
